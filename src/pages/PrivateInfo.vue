@@ -2,6 +2,8 @@
   <div class="w-full flex justify-center h-screen bg-[#EAEAEA]">
     <div class="w-[80%] pt-14">
       <form>
+        <Header :currentPage="1" />
+
         <div class="flex justify-between">
           <div class="pt-16 flex flex-col gap-16 w-[40%]">
             <div class="flex flex-col gap-8">
@@ -52,5 +54,10 @@
 </template>
 
 <script>
-export default {}
+import Header from '../components/Header.vue';
+export default {
+  components: {
+    Header
+  }
+}
 </script>
