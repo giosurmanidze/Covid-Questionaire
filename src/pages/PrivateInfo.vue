@@ -60,62 +60,40 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Header from '../components/Header.vue'
-import store from '../store/store'
+import { useRouter } from 'vue-router'
 import { useField, useForm } from 'vee-validate'
 import validationSchema from '../validators/privateInfoSchema'
+import { useStore } from 'vuex'
 
-export default {
-  components: {
-    Header
-  },
-  data() {
-    return {
-      first_name: store.state.first_name || '',
-      last_name: store.state.last_name || '',
-      email: store.state.email || ''
-    }
-  },
-  setup() {
-    const { resetForm, validate } = useForm({
-      initialValues: store.state,
-      validationSchema
-    })
 
-    const { value: first_name, errorMessage: first_nameError } = useField(
-      'first_name',
-      validationSchema
-    )
-    const { value: last_name, errorMessage: last_nameError } = useField(
-      'last_name',
-      validationSchema
-    )
-    const { value: email, errorMessage: emailError } = useField('email', validationSchema)
-    return {
-      resetForm,
-      validate,
-      first_name,
-      first_nameError,
-      last_name,
-      last_nameError,
-      email,
-      emailError
-    }
-  },
+const router = useRouter()
+const store = useStore()
+const initialValues = store.state
 
-  methods: {
-    updateInput(key) {
-      store.commit('updateInputValue', { key, value: this[key] })
-    },
-    handleSubmit() {
-      this.validate().then((isValid) => {
-        store.commit('updateFormValidity', isValid.valid)
-        if (isValid.valid) {
-          this.$router.push('covid-condition')
-        }
-      })
+const { validate, values } = useForm({
+  initialValues,
+  validationSchema
+})
+
+const { value: first_name, errorMessage: first_nameError } = useField(
+  'first_name',
+  validationSchema
+)
+const { value: last_name, errorMessage: last_nameError } = useField('last_name', validationSchema)
+const { value: email, errorMessage: emailError } = useField('email', validationSchema)
+
+const updateInput = (key) => {
+  store.commit('updateInputValue', { key, value: values[key] })
+}
+
+const handleSubmit = () => {
+  validate().then((isValid) => {
+    store.commit('updateFormValidity', isValid.valid)
+    if (isValid.valid) {
+      router.push('covid-condition')
     }
-  }
+  })
 }
 </script>
