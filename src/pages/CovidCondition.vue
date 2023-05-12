@@ -79,10 +79,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Header from '../components/Header.vue'
 import { RouterLink } from 'vue-router'
-
 export default {
   components: {
     Header
