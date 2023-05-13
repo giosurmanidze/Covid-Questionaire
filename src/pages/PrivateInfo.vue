@@ -67,7 +67,6 @@ import { useField, useForm } from 'vee-validate'
 import validationSchema from '../validators/privateInfoSchema'
 import { useStore } from 'vuex'
 
-
 const router = useRouter()
 const store = useStore()
 const initialValues = store.state
@@ -90,7 +89,7 @@ const updateInput = (key) => {
 
 const handleSubmit = () => {
   validate().then((isValid) => {
-    store.commit('updateFormValidity', isValid.valid)
+    store.commit('updateFormValidity', { status: isValid.valid, page: 'formPage2' })
     if (isValid.valid) {
       router.push('covid-condition')
     }

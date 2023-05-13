@@ -26,7 +26,7 @@ const router = createRouter({
       name: 'CovidCondition',
       component: CovidCondition,
       beforeEnter: (to, from, next) => {
-        if (store.state.isFormValid) {
+        if (store.state.isFormValid.formPage2) {
           next()
         } else {
           next('/error')
@@ -36,7 +36,14 @@ const router = createRouter({
     {
       path: '/vaccination',
       name: 'vaccination',
-      component: Vaccination
+      component: Vaccination,
+      beforeEnter: (to, from, next) => {
+        if (store.state.isFormValid.formPage3) {
+          next()
+        } else {
+          next('/error')
+        }
+      }
     },
     {
       path: '/tips',
