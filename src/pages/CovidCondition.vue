@@ -139,28 +139,22 @@ const validationSchema = yup.object({
       'required-if-had-covid',
       'This field is required when had_covid is "yes"',
       function (value) {
-        const { had_covid } = this.parent
-
-        if (had_covid === 'yes' && !value) {
-          return false
-        }
-
-        return true
+        const { had_covid } = this.parent;
+        return had_covid === 'yes' ? !!value : true;
       }
     ),
   covid_date: yup
     .string()
     .test('validate-covid-date', 'შეიყვანეთ სწორი ფორმატით', function (value) {
-      const { covid_if_tested_radio } = this.parent
+      const { covid_if_tested_radio } = this.parent;
 
-      if (covid_if_tested_radio === 'no') {
-        return /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/.test(value) || this.createError()
-      }
-
-      return true
+      return covid_if_tested_radio === 'no'
+        ? /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/.test(value) || this.createError()
+        : true;
     })
-    .nullable()
-})
+    .nullable(),
+});
+
 
 const { validate, values } = useForm({
   initialValues: store.state,
