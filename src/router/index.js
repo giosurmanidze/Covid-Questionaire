@@ -5,7 +5,6 @@ import CovidCondition from '../pages/CovidCondition.vue'
 import Vaccination from '../pages/Vaccination.vue'
 import Tips from '../pages/Tips.vue'
 import Thanks from '../pages/Thanks.vue'
-import store from '../store/store'
 import ErrorScreen from '../pages/ErrorScreen.vue'
 
 const router = createRouter({
@@ -23,27 +22,13 @@ const router = createRouter({
     },
     {
       path: '/covid-condition',
-      name: 'CovidCondition',
-      component: CovidCondition,
-      beforeEnter: (to, from, next) => {
-        if (store.state.isFormValid.formPage2) {
-          next()
-        } else {
-          next('/error')
-        }
-      }
+      name: 'covid-condition',
+      component: CovidCondition
     },
     {
       path: '/vaccination',
       name: 'vaccination',
-      component: Vaccination,
-      beforeEnter: (to, from, next) => {
-        if (store.state.isFormValid.formPage3) {
-          next()
-        } else {
-          next('/error')
-        }
-      }
+      component: Vaccination
     },
     {
       path: '/tips',
