@@ -24,54 +24,42 @@
                     სურვილისამებრ ჩაერთვება?*
                   </p>
                   <div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        name="non_formal_meetings"
-                        rules="required"
-                        value="twice_a_week"
-                        v-model="store.state.non_formal_meetings"
-                        @input="updateNonFormalMeetings('twice_a_week')"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">კვირაში ორჯერ</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        name="non_formal_meetings"
-                        rules="required"
-                        value="once_a_week"
-                        v-model="store.state.non_formal_meetings"
-                        @input="updateNonFormalMeetings('once_a_week')"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">კვირაში ერთხელ</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        name="non_formal_meetings"
-                        rules="required"
-                        value="Fortnightly"
-                        v-model="store.state.non_formal_meetings"
-                        @input="updateNonFormalMeetings('Fortnightly')"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">ორ კვირაში ერთხელ</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        name="non_formal_meetings"
-                        rules="required"
-                        value="one_a_month"
-                        v-model="store.state.non_formal_meetings"
-                        @input="updateNonFormalMeetings('one_a_month')"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">თვეში ერთხელ</p>
-                    </div>
+                    <radio-input
+                      type="radio"
+                      name="non_formal_meetings"
+                      class="w-6 h-6"
+                      value="twice_a_week"
+                      :modelValue="store.state.non_formal_meetings"
+                      rules="required"
+                      label="კვირაში ორჯერ"
+                    />
+                    <radio-input
+                      type="radio"
+                      name="non_formal_meetings"
+                      class="w-6 h-6"
+                      value="once_a_week"
+                      :modelValue="store.state.non_formal_meetings"
+                      rules="required"
+                      label="კვირაში ერთხელ"
+                    />
+                    <radio-input
+                      type="radio"
+                      name="non_formal_meetings"
+                      class="w-6 h-6"
+                      value="Fortnightly"
+                      :modelValue="store.state.non_formal_meetings"
+                      rules="required"
+                      label="ორ კვირაში ერთხელ"
+                    />
+                    <radio-input
+                      type="radio"
+                      name="non_formal_meetings"
+                      class="w-6 h-6"
+                      value="one_a_month"
+                      :modelValue="store.state.non_formal_meetings"
+                      rules="required"
+                      label="თვეში ერთხელ"
+                    />
                   </div>
                 </div>
                 <div class="flex flex-col gap-4">
@@ -79,66 +67,51 @@
                     კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*
                   </p>
                   <div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        rules="required"
-                        name="number_of_days_from_office"
-                        :value="0"
-                        v-model="store.state.number_of_days_from_office"
-                        @input="updateNumberOfDaysFromOffice(0)"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">0</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        rules="required"
-                        name="number_of_days_from_office"
-                        :value="1"
-                        v-model="store.state.number_of_days_from_office"
-                        @input="updateNumberOfDaysFromOffice(1)"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">1</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        rules="required"
-                        name="number_of_days_from_office"
-                        :value="2"
-                        v-model="store.state.number_of_days_from_office"
-                        @input="updateNumberOfDaysFromOffice(2)"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">2</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        rules="required"
-                        name="number_of_days_from_office"
-                        :value="3"
-                        v-model="store.state.number_of_days_from_office"
-                        @input="updateNumberOfDaysFromOffice(3)"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">3</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <Field
-                        type="radio"
-                        class="w-6 h-6"
-                        rules="required"
-                        name="number_of_days_from_office"
-                        :value="4"
-                        v-model="store.state.number_of_days_from_office"
-                        @input="updateNumberOfDaysFromOffice(4)"
-                      />
-                      <p class="text-[20px] pb-1 text-[#232323]">4</p>
-                    </div>
+                    <radio-input
+                      type="radio"
+                      name="number_of_days_from_office"
+                      class="w-6 h-6"
+                      value="0"
+                      :modelValue="store.state.number_of_days_from_office"
+                      rules="required"
+                      label="0"
+                    />
+                    <radio-input
+                      type="radio"
+                      name="number_of_days_from_office"
+                      class="w-6 h-6"
+                      value="1"
+                      :modelValue="store.state.number_of_days_from_office"
+                      rules="required"
+                      label="1"
+                    />
+                    <radio-input
+                      type="radio"
+                      name="number_of_days_from_office"
+                      class="w-6 h-6"
+                      value="2"
+                      :modelValue="store.state.number_of_days_from_office"
+                      rules="required"
+                      label="2"
+                    />
+                    <radio-input
+                      type="radio"
+                      name="number_of_days_from_office"
+                      class="w-6 h-6"
+                      value="3"
+                      :modelValue="store.state.number_of_days_from_office"
+                      rules="required"
+                      label="3"
+                    />
+                    <radio-input
+                      type="radio"
+                      name="number_of_days_from_office"
+                      class="w-6 h-6"
+                      value="4"
+                      :modelValue="store.state.number_of_days_from_office"
+                      rules="required"
+                      label="4"
+                    />
                   </div>
                 </div>
                 <textarea-field
@@ -156,8 +129,9 @@
               </div>
             </div>
           </div>
-          <div class="w-[50%] pt-10">
-            <img src="../assets/Group 6.svg" alt="" />
+          <div class="w-[50%] pt-20">
+            <img src="../assets/bike2 1.svg" />
+            <div class="absolute w-[62rem] h-[7.5rem] top-[26%] left-[58%] rectangle"></div>
           </div>
         </div>
         <div class="flex justify-center pr-[520px] pt-10">
@@ -182,17 +156,11 @@
 import Header from '../components/Header.vue'
 import { RouterLink } from 'vue-router'
 import { useStore } from 'vuex'
-import { Field, Form } from 'vee-validate'
+import { Form } from 'vee-validate'
 import TextareaField from '../components/TextareaField.vue'
+import RadioInput from '../components/RadioInput.vue'
 
 const store = useStore()
-
-const updateNonFormalMeetings = (value) => {
-  store.commit('setNonFormalMeetings', value)
-}
-const updateNumberOfDaysFromOffice = (value) => {
-  store.commit('setNumberOfDaysFromOffice', value)
-}
 
 const updateInput = (key, value) => {
   store.commit('updateInputValue', { key, value })
@@ -201,3 +169,48 @@ function onSubmit(values) {
   console.log(values)
 }
 </script>
+
+<style scoped>
+.rectangle {
+  animation: rect 0.2s ease-in forwards;
+}
+@keyframes rect {
+  0% {
+    scale: 1.5;
+  }
+  100% {
+    scale: 1;
+  }
+}
+.rectangle {
+  position: absolute;
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  transform: rotate(-56deg) scale(1.18);
+  background-color: hsla(0, 79%, 65%, 0.531);
+}
+
+.rectangle::before,
+.rectangle::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  width: 100px;
+  height: 50px;
+  border-radius: 150px 150px 0 0;
+  background-color: hsla(0, 79%, 65%, 0.531);
+}
+
+.rectangle::before {
+  left: 100px;
+  transform: rotate(90deg);
+  transform-origin: 0 100%;
+}
+
+.rectangle::after {
+  left: 0;
+  transform: rotate(0);
+  transform-origin: 100% 100%;
+}
+</style>
