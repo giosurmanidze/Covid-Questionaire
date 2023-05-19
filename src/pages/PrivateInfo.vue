@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex justify-center h-screen bg-[#EAEAEA]">
     <div class="w-[80%] pt-14">
-      <Form @submit="onSubmit" v-slot="{ meta, handleSubmit }">
+      <Form @submit="onSubmit" v-slot="{ meta, values, handleSubmit  }">
         <Header :currentPage="1" />
         <div class="flex justify-between">
           <div class="pt-16 flex flex-col gap-16 w-[40%]">
@@ -24,6 +24,7 @@
                 placeholder="ჯუღაშვილი"
                 :updateInput="updateInput"
               />
+              {{ values }}
               <text-field
                 label="მეილი"
                 type="text"
@@ -40,11 +41,19 @@
             </div>
           </div>
           <div class="w-[60%]">
-            <img src="../assets/Group 5.svg" alt="" />
+            <img
+              src="../assets/main-logo.svg"
+              class="absolute top-[324px] right-[340px] rectangle"
+            />
+            <img src="../assets/scan2.svg" class="relative" />
           </div>
         </div>
         <div class="flex justify-center gap-16">
-          <submit-button :meta="meta.valid" destination="/covid-condition" @click="handleSubmit" />
+          <submit-button
+            :isValid="meta.valid"
+            destination="/covid-condition"
+            @click="handleSubmit"
+          />
         </div>
       </Form>
     </div>
@@ -60,8 +69,6 @@ import TextField from '../components/TextField.vue'
 
 const store = useStore()
 
-console.log(store.state)
-
 const updateInput = (key, value) => {
   store.commit('updateInputValue', { key, value })
 }
@@ -70,3 +77,25 @@ function onSubmit(values) {
   console.log(values)
 }
 </script>
+
+<style scoped>
+hr {
+  margin-bottom: 2rem;
+  width: 40%;
+  height: 0.8px;
+  background-color: black;
+}
+.rectangle {
+  animation: rect 0.36s ease-in forwards;
+}
+@keyframes rect {
+  0% {
+    scale: 0;
+    left: 32%;
+  }
+  100% {
+    scale: 1;
+    left: 50%;
+  }
+}
+</style>

@@ -1,23 +1,27 @@
 <template>
   <div class="flex items-center gap-3">
-    <input
-      type="radio"
+    <Field
+      :type="type"
       :name="name"
       :value="value"
+      :rules="rules"
       class="w-6 h-6"
-      :checked="modelValue === value"
-      @input="updateValue"
-      @click="clearInputs"
+      v-model="modelValue"
+      @input="updateCovidCondition(value)"
+      @click="clearInput"
     />
-    <strong class="text-[20px] pb-1">{{ label }}</strong>
+    <label class="text-[20px] pb-1">{{ label }}</label>
   </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { Field } from 'vee-validate'
+import { ref, watch, onMounted } from 'vue'
+import { useStore } from 'vuex'
+import { defineProps } from 'vue'
 
 const props = defineProps({
-  label: {
+  type: {
     type: String,
     required: true
   },
@@ -29,19 +33,35 @@ const props = defineProps({
     type: String,
     required: true
   },
-  modelValue: {
+  rules: {
     type: String,
     required: true
+  },
+  label: {
+    type: String,
+    required: true
+  },
+  clearInput: {
+    type: Function,
+    required: false
   }
 })
 
-const emits = defineEmits(['update:modelValue'])
+const modelValue = ref('')
+const store = useStore()
 
-const updateValue = () => {
-  emits('update:modelValue', value)
+const updateCovidCondition = (value) => {
+  modelValue.value = value
+  store.commit('setCovidCondition', { name: props.name, value })
 }
 
-const clearInputs = () => {
-  // Implement your clear logic here
-}
+onMounted(() => {
+  modelValue.value = store.state[props.name]
+})
+watch(
+  () => props.value,
+  (newValue) => {
+    modelValue.value = newValue
+  }
+)
 </script>
