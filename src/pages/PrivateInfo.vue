@@ -1,45 +1,39 @@
 <template>
   <div class="w-full flex justify-center h-screen bg-[#EAEAEA]">
     <div class="w-[80%] pt-14">
-      <form @submit.prevent="handleSubmit">
+      <Form @submit="onSubmit" v-slot="{ meta, values, handleSubmit  }">
         <Header :currentPage="1" />
         <div class="flex justify-between">
           <div class="pt-16 flex flex-col gap-16 w-[40%]">
             <div class="flex flex-col gap-8">
-              <div class="flex flex-col gap-3">
-                <strong class="text-[22px]">სახელი<span>*</span></strong>
-                <input
-                  type="text"
-                  placeholder="იოსებ"
-                  v-model="first_name"
-                  @input="updateInput('first_name')"
-                  class="w-[75%] h-12 border-[0.8px] border-[#232323] pl-5 outline-none"
-                />
-                <p class="error-message text-[#F15524]">{{ first_nameError }}</p>
-              </div>
-
-              <div class="flex flex-col gap-3">
-                <strong class="text-[22px]">გვარი<span>*</span></strong>
-                <input
-                  type="text"
-                  v-model="last_name"
-                  @input="updateInput('last_name')"
-                  placeholder="ჯუღაშვილი"
-                  class="w-[75%] h-12 border-[0.8px] border-[#232323] pl-5 outline-none"
-                />
-                <p class="error-message text-[#F15524]">{{ last_nameError }}</p>
-              </div>
-              <div class="flex flex-col gap-3">
-                <strong class="text-[22px]">მეილი<span>*</span></strong>
-                <input
-                  type="text"
-                  v-model="email"
-                  @input="updateInput('email')"
-                  placeholder="fbi@redberry.ge"
-                  class="w-[75%] h-12 border-[0.8px] border-[#232323] pl-5 outline-none"
-                />
-                <p class="error-message text-[#F15524]">{{ emailError }}</p>
-              </div>
+              <text-field
+                label="სახელი"
+                type="text"
+                :value="store.state.first_name"
+                rules="required|min:3|max:255"
+                name="first_name"
+                placeholder="იოსებ"
+                :updateInput="updateInput"
+              />
+              <text-field
+                label="გვარი"
+                type="text"
+                :value="store.state.last_name"
+                rules="required|min:3|max:255"
+                name="last_name"
+                placeholder="ჯუღაშვილი"
+                :updateInput="updateInput"
+              />
+              {{ values }}
+              <text-field
+                label="მეილი"
+                type="text"
+                :value="store.state.email"
+                rules="required|email|regex_email"
+                name="email"
+                placeholder="fbi@redberry.ge"
+                :updateInput="updateInput"
+              />
             </div>
             <div class="pt-14 w-[50%]">
               <div class="w-full h-[1px] bg-[#000000]"></div>
@@ -47,53 +41,61 @@
             </div>
           </div>
           <div class="w-[60%]">
-            <img src="../assets/Group 5.svg" alt="" />
+            <img
+              src="../assets/main-logo.svg"
+              class="absolute top-[324px] right-[340px] rectangle"
+            />
+            <img src="../assets/scan2.svg" class="relative" />
           </div>
         </div>
         <div class="flex justify-center gap-16">
-          <button type="submit">
-            <img src="../assets/Vector 2.svg" />
-          </button>
+          <submit-button
+            :isValid="meta.valid"
+            destination="/covid-condition"
+            @click="handleSubmit"
+          />
         </div>
-      </form>
+      </Form>
     </div>
   </div>
 </template>
 
 <script setup>
 import Header from '../components/Header.vue'
-import { useRouter } from 'vue-router'
-import { useField, useForm } from 'vee-validate'
-import validationSchema from '../validators/privateInfoSchema'
 import { useStore } from 'vuex'
+import { Form } from 'vee-validate'
+import SubmitButton from '../components/SubmitButton.vue'
+import TextField from '../components/TextField.vue'
 
-
-const router = useRouter()
 const store = useStore()
-const initialValues = store.state
 
-const { validate, values } = useForm({
-  initialValues,
-  validationSchema
-})
-
-const { value: first_name, errorMessage: first_nameError } = useField(
-  'first_name',
-  validationSchema
-)
-const { value: last_name, errorMessage: last_nameError } = useField('last_name', validationSchema)
-const { value: email, errorMessage: emailError } = useField('email', validationSchema)
-
-const updateInput = (key) => {
-  store.commit('updateInputValue', { key, value: values[key] })
+const updateInput = (key, value) => {
+  store.commit('updateInputValue', { key, value })
 }
 
-const handleSubmit = () => {
-  validate().then((isValid) => {
-    store.commit('updateFormValidity', isValid.valid)
-    if (isValid.valid) {
-      router.push('covid-condition')
-    }
-  })
+function onSubmit(values) {
+  console.log(values)
 }
 </script>
+
+<style scoped>
+hr {
+  margin-bottom: 2rem;
+  width: 40%;
+  height: 0.8px;
+  background-color: black;
+}
+.rectangle {
+  animation: rect 0.36s ease-in forwards;
+}
+@keyframes rect {
+  0% {
+    scale: 0;
+    left: 32%;
+  }
+  100% {
+    scale: 1;
+    left: 50%;
+  }
+}
+</style>
