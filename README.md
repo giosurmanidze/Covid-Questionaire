@@ -1,35 +1,62 @@
-# covid-questionnaire-app
+<h1>Covid Questionary</h1>
+<hr>
+<p>The Covid Questionnaire is an application that new employees of Redberry have to fill out to find out how they feel about the Covid situation and how Redberry can improve and support the company's internal Covid policy.</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+<h1></h1>
 
-## Recommended IDE Setup
+## Table of Contents
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [Prerequisites](#prerequisites)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Development](#development)
+- [Deployment](#deployment)
 
-## Customize configuration
+<h1></h1>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Prerequisites <a name="prerequisites"></a>
 
-## Project Setup
+To run Covid Questionary App, you will need the following:
 
-```sh
-npm install
-```
+- <a href="https://vitejs.dev/"><img src="https://i.postimg.cc/kgYym3VP/vite.png" width="17"> Vite@3 and up</a>
 
-### Compile and Hot-Reload for Development
+- <a href="https://docs.npmjs.com/"><img src="https://i.postimg.cc/qRhbYBQF/npm.png" width="17"> npm@6 and up</a>
+- <a href="https://vee-validate.logaretm.com/v4/"><img src="https://i.postimg.cc/qqcLVNK1/veevalidate-1.png" width="17"> Vee-validate@4 and up</a>
 
-```sh
-npm run dev
-```
+<h1></h1>
 
-### Compile and Minify for Production
+## Tech Stack <a name="tech-stack"></a>
 
-```sh
-npm run build
-```
+Covid Questionary App App is built using the following technologies:
 
-### Lint with [ESLint](https://eslint.org/)
+- <a href="https://vuejs.org/"><img src="https://i.postimg.cc/D0cqptVD/vue.png" width="17"/> Vue@3.x </a> - front-end framework
 
-```sh
-npm run lint
-```
+- <a href="https://github.com/spatie/laravel-translatable"><img src="https://i.postimg.cc/Ls7vzKR3/tailwind.jpg" width="13"/> Tailwind@3.x </a> - css framework
+
+<h1></h1>
+
+## Getting Started <a name="getting-started"></a>
+
+To get started with Covid Questionary App, follow these steps:
+
+1. Clone the repository `https://github.com/RedberryInternship/giorgi-surmanidze-covid-questionaire.git`
+2. Install all js dependencies by running `npm install`
+
+Now, you should be good to go!
+
+<h1></h1>
+
+## Development <a name="development"></a>
+
+for using tailwind css you may run:
+
+`npm run dev`
+
+<h1></h1>
+
+## Deployment <a name="deployment"></a>
+
+for using tailwind css you may run:
+
+<br>
+<img src="https://i.postimg.cc/hPTFvsLY/digital-Ocean.png" >
