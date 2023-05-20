@@ -27,7 +27,6 @@
                     <radio-input
                       type="radio"
                       name="non_formal_meetings"
-                      class="w-6 h-6"
                       value="twice_a_week"
                       :modelValue="store.state.non_formal_meetings"
                       rules="required"
@@ -36,7 +35,6 @@
                     <radio-input
                       type="radio"
                       name="non_formal_meetings"
-                      class="w-6 h-6"
                       value="once_a_week"
                       :modelValue="store.state.non_formal_meetings"
                       rules="required"
@@ -45,7 +43,6 @@
                     <radio-input
                       type="radio"
                       name="non_formal_meetings"
-                      class="w-6 h-6"
                       value="Fortnightly"
                       :modelValue="store.state.non_formal_meetings"
                       rules="required"
@@ -54,7 +51,6 @@
                     <radio-input
                       type="radio"
                       name="non_formal_meetings"
-                      class="w-6 h-6"
                       value="one_a_month"
                       :modelValue="store.state.non_formal_meetings"
                       rules="required"
@@ -70,7 +66,6 @@
                     <radio-input
                       type="radio"
                       name="number_of_days_from_office"
-                      class="w-6 h-6"
                       value="0"
                       :modelValue="store.state.number_of_days_from_office"
                       rules="required"
@@ -79,7 +74,6 @@
                     <radio-input
                       type="radio"
                       name="number_of_days_from_office"
-                      class="w-6 h-6"
                       value="1"
                       :modelValue="store.state.number_of_days_from_office"
                       rules="required"
@@ -88,7 +82,6 @@
                     <radio-input
                       type="radio"
                       name="number_of_days_from_office"
-                      class="w-6 h-6"
                       value="2"
                       :modelValue="store.state.number_of_days_from_office"
                       rules="required"
@@ -97,7 +90,6 @@
                     <radio-input
                       type="radio"
                       name="number_of_days_from_office"
-                      class="w-6 h-6"
                       value="3"
                       :modelValue="store.state.number_of_days_from_office"
                       rules="required"
@@ -106,7 +98,6 @@
                     <radio-input
                       type="radio"
                       name="number_of_days_from_office"
-                      class="w-6 h-6"
                       value="4"
                       :modelValue="store.state.number_of_days_from_office"
                       rules="required"
@@ -164,7 +155,7 @@ import axios from 'axios'
 const store = useStore()
 
 const updateInput = (key, value) => {
-  store.commit('updateInputValue', { key, value })
+  store.commit('updateTextInput', { key, value })
 }
 function onSubmit() {
   const data = {

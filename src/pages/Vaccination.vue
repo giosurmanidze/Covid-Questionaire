@@ -150,6 +150,7 @@ import SubmitButton from '../components/SubmitButton.vue'
 import RadioInput from '../components/RadioInput.vue'
 
 const store = useStore()
+
 const clearFirstInput = () => {
   store.state.vaccination_stage = ''
   localStorage.removeItem('vaccination_stage')
