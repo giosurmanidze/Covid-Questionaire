@@ -52,9 +52,9 @@ const props = defineProps({
 const modelValue = ref('')
 const store = useStore()
 
-const updateCovidCondition = (value) => {
+const updateRadioValue = (value) => {
   modelValue.value = value
-  store.commit('setCovidCondition', { name: props.name, value })
+  store.commit('updateRadioInput', { name: props.name, value })
 }
 
 onMounted(() => {
