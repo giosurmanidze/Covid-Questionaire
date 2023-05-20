@@ -1,5 +1,10 @@
-import axiosInstance from '../axios/axiosInstance'
+import axiosInstance from '../config/axiosInstance'
 
-export const createData = (data) => {
-  return axiosInstance.post('', data)
+export const createData = async (data) => {
+  try {
+    const response = await axiosInstance.post('', data)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
 }

@@ -158,16 +158,13 @@ const router = useRouter()
 const updateInput = (key, value) => {
   store.commit('updateTextInput', { key, value })
 }
+
 const onSubmit = () => {
   const data = store.getters.formData
 
-  createData(data)
-    .then((response) => {
-      return response.status === 201 && router.push('/thanks')
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+  createData(data).then(() => {
+    return router.push('/thanks')
+  })
 }
 </script>
 
