@@ -30,7 +30,7 @@
                 type="radio"
                 class="w-6 h-6"
                 name="had_covid"
-                value="current"
+                value="have_right_now "
                 :modelValue="store.state.had_covid"
                 rules="required"
                 label="ახლა მაქვს"

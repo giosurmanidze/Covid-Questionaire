@@ -173,6 +173,7 @@ function onSubmit() {
     email: store.state.email,
     had_covid: store.state.had_covid,
     had_antibody_test: store.state.covid_if_tested_radio === 'true',
+    covid_sickness_date: store.state.covid_date,
     antibodies: {
       test_date: store.state.number_date,
       number: Number(store.state.number_of_anti)
@@ -184,17 +185,26 @@ function onSubmit() {
     number_of_days_from_office: Number(store.state.number_of_days_from_office),
     what_about_meetings_in_live: store.state.what_about_meetings_in_live,
     tell_us_your_opinion_about_us: store.state.tell_us_your_opinion_about_us
-  };
+  }
 
-  axios.post('https://covid19.devtest.ge/api/create', data)
-    .then(response => {
-      console.log(response);
+  const nonEmptyData = Object.entries(data).reduce((acc, [key, value]) => {
+    if (value !== '' && value !== null && value !== undefined) {
+      acc[key] = value
+    }
+    return acc
+  }, {})
+
+  console.log(nonEmptyData)
+  axios
+    .post('https://covid19.devtest.ge/api/create', nonEmptyData)
+    .then((response) => {
+      console.log(response)
       // Handle response data here
     })
-    .catch(error => {
-      console.error(error);
+    .catch((error) => {
+      console.error(error)
       // Handle error here
-    });
+    })
 }
 </script>
 
