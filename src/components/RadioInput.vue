@@ -7,7 +7,7 @@
       :rules="rules"
       class="w-6 h-6"
       v-model="modelValue"
-      @input="updateCovidCondition(value)"
+      @input="updateRadioValue(value)"
       @click="clearInput"
     />
     <label class="text-[20px] pb-1">{{ label }}</label>
@@ -50,9 +50,9 @@ const props = defineProps({
 const modelValue = ref('')
 const store = useStore()
 
-const updateCovidCondition = (value) => {
+const updateRadioValue = (value) => {
   modelValue.value = value
-  store.commit('setCovidCondition', { name: props.name, value })
+  store.commit('updateRadioInput', { name: props.name, value })
 }
 
 onMounted(() => {
