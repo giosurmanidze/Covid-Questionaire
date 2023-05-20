@@ -125,7 +125,7 @@ import RadioInput from '../components/RadioInput.vue'
 const store = useStore()
 
 const updateInput = (key, value) => {
-  store.commit('updateInputValue', { key, value })
+  store.commit('updateTextInput', { key, value })
 }
 
 const removeInput = () => {

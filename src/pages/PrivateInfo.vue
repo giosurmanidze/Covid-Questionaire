@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex justify-center h-screen bg-[#EAEAEA]">
     <div class="w-[80%] pt-14">
-      <Form @submit="onSubmit" v-slot="{ meta, values, handleSubmit  }">
+      <Form @submit="onSubmit" v-slot="{ meta, handleSubmit }">
         <Header :currentPage="1" />
         <div class="flex justify-between">
           <div class="pt-16 flex flex-col gap-16 w-[40%]">
@@ -24,7 +24,6 @@
                 placeholder="ჯუღაშვილი"
                 :updateInput="updateInput"
               />
-              {{ values }}
               <text-field
                 label="მეილი"
                 type="text"
@@ -70,7 +69,7 @@ import TextField from '../components/TextField.vue'
 const store = useStore()
 
 const updateInput = (key, value) => {
-  store.commit('updateInputValue', { key, value })
+  store.commit('updateTextInput', { key, value })
 }
 
 function onSubmit(values) {
