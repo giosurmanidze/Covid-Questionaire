@@ -40,9 +40,9 @@
                 <radio-input
                   type="radio"
                   class="w-6 h-6"
-                  name="covid_if_tested_radio"
+                  name="had_antibody_test"
                   value="true"
-                  :modelValue="store.state.covid_if_tested_radio"
+                  :modelValue="store.state.had_antibody_test"
                   :clearInput="clearCovidTestAnswerNo"
                   rules="required"
                   label="კი"
@@ -50,15 +50,15 @@
                 <radio-input
                   type="radio"
                   class="w-6 h-6"
-                  name="covid_if_tested_radio"
+                  name="had_antibody_test"
                   value="false"
-                  :modelValue="store.state.covid_if_tested_radio"
+                  :modelValue="store.state.had_antibody_test"
                   :clearInput="clearCovidTestAnswerYes"
                   rules="required"
                   label="არა"
                 />
                 <div
-                  v-if="values.had_covid === 'yes' && values.covid_if_tested_radio === 'true'"
+                  v-if="values.had_covid === 'yes' && values.had_antibody_test === 'true'"
                   class="flex flex-col gap-3 w-[100%] pt-4"
                 >
                   <strong class="text-[22px]"
@@ -81,13 +81,13 @@
                   />
                 </div>
                 <div
-                  v-if="values.had_covid === 'yes' && values.covid_if_tested_radio === 'false'"
+                  v-if="values.had_covid === 'yes' && values.had_antibody_test === 'false'"
                   class="flex flex-col gap-3 w-[100%] pt-4"
                 >
                   <text-field
                     label="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19"
                     type="text"
-                    rules="regex_date"
+                    rules="regex_date|required"
                     name="covid_date"
                     :value="store.state.covid_date"
                     placeholder="დდ/მმ/წწ"
@@ -132,11 +132,11 @@ const removeInput = () => {
   store.state.number_date = ''
   store.state.number_of_anti = ''
   store.state.covid_date = ''
-  store.state.covid_if_tested_radio = ''
+  store.state.had_antibody_test = ''
   localStorage.removeItem('number_date')
   localStorage.removeItem('number_of_anti')
   localStorage.removeItem('covid_date')
-  localStorage.removeItem('covid_if_tested_radio')
+  localStorage.removeItem('had_antibody_test')
 }
 const clearCovidTestAnswerNo = () => {
   store.state.covid_date = ''
