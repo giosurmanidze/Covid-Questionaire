@@ -160,11 +160,10 @@ const updateInput = (key, value) => {
 }
 const onSubmit = () => {
   const data = store.getters.formData
+
   createData(data)
     .then((response) => {
-      if (response.status === 201) {
-        router.push('/thanks')
-      }
+      return response.status === 201 && router.push('/thanks')
     })
     .catch((error) => {
       console.error(error)
