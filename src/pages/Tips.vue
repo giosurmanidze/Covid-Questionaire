@@ -43,7 +43,7 @@
                     <radio-input
                       type="radio"
                       name="non_formal_meetings"
-                      value="Fortnightly"
+                      value="once_in_a_two_weeks"
                       :modelValue="store.state.non_formal_meetings"
                       rules="required"
                       label="ორ კვირაში ერთხელ"
@@ -51,7 +51,7 @@
                     <radio-input
                       type="radio"
                       name="non_formal_meetings"
-                      value="one_a_month"
+                      value="once_in_a_month"
                       :modelValue="store.state.non_formal_meetings"
                       rules="required"
                       label="თვეში ერთხელ"
@@ -145,19 +145,26 @@
 
 <script setup>
 import Header from '../components/Header.vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Form } from 'vee-validate'
 import TextareaField from '../components/TextareaField.vue'
 import RadioInput from '../components/RadioInput.vue'
+import { createData } from '../services/createData'
 
 const store = useStore()
+const router = useRouter()
 
 const updateInput = (key, value) => {
   store.commit('updateTextInput', { key, value })
 }
-function onSubmit(values) {
-  console.log(values)
+
+const onSubmit = () => {
+  const data = store.getters.formData
+
+  createData(data).then(() => {
+    return router.push('/thanks')
+  })
 }
 </script>
 
