@@ -150,7 +150,7 @@ import { useStore } from 'vuex'
 import { Form } from 'vee-validate'
 import TextareaField from '../components/TextareaField.vue'
 import RadioInput from '../components/RadioInput.vue'
-import axios from 'axios'
+import { createData } from '../services/createData'
 
 const store = useStore()
 const router = useRouter()
@@ -158,42 +158,12 @@ const router = useRouter()
 const updateInput = (key, value) => {
   store.commit('updateTextInput', { key, value })
 }
-function onSubmit() {
-  const data = {
-    first_name: store.state.first_name,
-    last_name: store.state.last_name,
-    email: store.state.email,
-    had_covid: store.state.had_covid,
-    had_antibody_test: store.state.had_antibody_test,
-    covid_sickness_date: store.state.covid_date,
-    antibodies: {
-      test_date: store.state.number_date,
-      number: Number(store.state.number_of_anti)
-    },
-    had_vaccine: store.state.had_vaccine === 'true',
-    vaccination_stage: store.state.vaccination_stage,
-    non_formal_meetings: store.state.non_formal_meetings,
-    i_am_waiting: store.state.waiting_for,
-    number_of_days_from_office: Number(store.state.number_of_days_from_office),
-    what_about_meetings_in_live: store.state.what_about_meetings_in_live,
-    tell_us_your_opinion_about_us: store.state.tell_us_your_opinion_about_us
-  }
-
-  const nonEmptyData = Object.entries(data).reduce((acc, [key, value]) => {
-    if (value !== '' && value !== null && value !== undefined) {
-      if (key === 'antibodies' && value.test_date === '') {
-        return acc
-      }
-      acc[key] = value
-    }
-    return acc
-  }, {})
-
-  axios
-    .post('https://covid19.devtest.ge/api/create', nonEmptyData)
+const onSubmit = () => {
+  const data = store.getters.formData
+  createData(data)
     .then((response) => {
       if (response.status === 201) {
-        router.push("/thanks")
+        router.push('/thanks')
       }
     })
     .catch((error) => {
