@@ -8,7 +8,7 @@
         :rules="rules"
         class="appearance-none w-5 h-5 flex items-center rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-2 checked:bg-neutral-900"
         v-model="modelValue"
-        @input="updateCovidCondition(value)"
+        @input="updateRadioValue(value)"
         @click="clearInput"
       />
       {{ label }}</label

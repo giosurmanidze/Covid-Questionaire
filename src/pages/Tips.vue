@@ -43,7 +43,7 @@
                     <radio-input
                       type="radio"
                       name="non_formal_meetings"
-                      value="Fortnightly"
+                      value="once_in_a_two_weeks"
                       :modelValue="store.state.non_formal_meetings"
                       rules="required"
                       label="ორ კვირაში ერთხელ"
@@ -51,7 +51,7 @@
                     <radio-input
                       type="radio"
                       name="non_formal_meetings"
-                      value="one_a_month"
+                      value="once_in_a_month"
                       :modelValue="store.state.non_formal_meetings"
                       rules="required"
                       label="თვეში ერთხელ"
@@ -145,7 +145,7 @@
 
 <script setup>
 import Header from '../components/Header.vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Form } from 'vee-validate'
 import TextareaField from '../components/TextareaField.vue'
@@ -153,6 +153,7 @@ import RadioInput from '../components/RadioInput.vue'
 import axios from 'axios'
 
 const store = useStore()
+const router = useRouter()
 
 const updateInput = (key, value) => {
   store.commit('updateTextInput', { key, value })
@@ -163,7 +164,7 @@ function onSubmit() {
     last_name: store.state.last_name,
     email: store.state.email,
     had_covid: store.state.had_covid,
-    had_antibody_test: store.state.covid_if_tested_radio === 'true',
+    had_antibody_test: store.state.had_antibody_test,
     covid_sickness_date: store.state.covid_date,
     antibodies: {
       test_date: store.state.number_date,
@@ -180,21 +181,23 @@ function onSubmit() {
 
   const nonEmptyData = Object.entries(data).reduce((acc, [key, value]) => {
     if (value !== '' && value !== null && value !== undefined) {
+      if (key === 'antibodies' && value.test_date === '') {
+        return acc
+      }
       acc[key] = value
     }
     return acc
   }, {})
 
-  console.log(nonEmptyData)
   axios
     .post('https://covid19.devtest.ge/api/create', nonEmptyData)
     .then((response) => {
-      console.log(response)
-      // Handle response data here
+      if (response.status === 201) {
+        router.push("/thanks")
+      }
     })
     .catch((error) => {
       console.error(error)
-      // Handle error here
     })
 }
 </script>
