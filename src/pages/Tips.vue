@@ -159,14 +159,42 @@ import { useStore } from 'vuex'
 import { Form } from 'vee-validate'
 import TextareaField from '../components/TextareaField.vue'
 import RadioInput from '../components/RadioInput.vue'
+import axios from 'axios'
 
 const store = useStore()
 
 const updateInput = (key, value) => {
   store.commit('updateInputValue', { key, value })
 }
-function onSubmit(values) {
-  console.log(values)
+function onSubmit() {
+  const data = {
+    first_name: store.state.first_name,
+    last_name: store.state.last_name,
+    email: store.state.email,
+    had_covid: store.state.had_covid,
+    had_antibody_test: store.state.covid_if_tested_radio === 'true',
+    antibodies: {
+      test_date: store.state.number_date,
+      number: Number(store.state.number_of_anti)
+    },
+    had_vaccine: store.state.had_vaccine === 'true',
+    vaccination_stage: store.state.vaccination_stage,
+    non_formal_meetings: store.state.non_formal_meetings,
+    i_am_waiting: store.state.waiting_for,
+    number_of_days_from_office: Number(store.state.number_of_days_from_office),
+    what_about_meetings_in_live: store.state.what_about_meetings_in_live,
+    tell_us_your_opinion_about_us: store.state.tell_us_your_opinion_about_us
+  };
+
+  axios.post('https://covid19.devtest.ge/api/create', data)
+    .then(response => {
+      console.log(response);
+      // Handle response data here
+    })
+    .catch(error => {
+      console.error(error);
+      // Handle error here
+    });
 }
 </script>
 
