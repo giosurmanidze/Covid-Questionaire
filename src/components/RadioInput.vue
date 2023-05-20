@@ -1,16 +1,18 @@
 <template>
-  <div class="flex items-center gap-3">
-    <Field
-      :type="type"
-      :name="name"
-      :value="value"
-      :rules="rules"
-      class="w-6 h-6"
-      v-model="modelValue"
-      @input="updateRadioValue(value)"
-      @click="clearInput"
-    />
-    <label class="text-[20px] pb-1">{{ label }}</label>
+  <div class="flex items-center gap-3 w-full">
+    <label class="text-[22px] flex items-center gap-3">
+      <Field
+        :type="type"
+        :name="name"
+        :value="value"
+        :rules="rules"
+        class="appearance-none w-5 h-5 flex items-center rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-2 checked:bg-neutral-900"
+        v-model="modelValue"
+        @input="updateCovidCondition(value)"
+        @click="clearInput"
+      />
+      {{ label }}</label
+    >
   </div>
 </template>
 
