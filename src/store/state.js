@@ -3,7 +3,7 @@ const state = {
   last_name: localStorage.getItem('last_name') || '',
   email: localStorage.getItem('email') || '',
   had_covid: localStorage.getItem('had_covid') || '',
-  covid_if_tested_radio: localStorage.getItem('covid_if_tested_radio') || '',
+  had_antibody_test: localStorage.getItem('had_antibody_test') || '',
   covid_date: localStorage.getItem('covid_date') || '',
   number_of_anti: localStorage.getItem('number_of_anti') || '',
   number_date: localStorage.getItem('number_date') || '',
