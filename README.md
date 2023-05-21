@@ -10,7 +10,6 @@
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Development](#development)
-- [Deployment](#deployment)
 
 <h1></h1>
 
@@ -48,15 +47,7 @@ Now, you should be good to go!
 
 ## Development <a name="development"></a>
 
-for using tailwind css you may run:
+You can run Vite development server by executing:
 
 `npm run dev`
 
-<h1></h1>
-
-## Deployment <a name="deployment"></a>
-
-for using tailwind css you may run:
-
-<br>
-<img src="https://i.postimg.cc/hPTFvsLY/digital-Ocean.png" >
