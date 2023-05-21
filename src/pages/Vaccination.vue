@@ -127,12 +127,12 @@
 
           <div class="w-[50%] pt-16">
             <img src="../assets/main_logo_3.svg" class="rectangle absolute" />
-            <img src="../assets/doctor2.svg" class="relative" />
+            <img src="../assets/doctor.svg" class="relative" />
           </div>
         </div>
         <div class="flex justify-center gap-16">
           <RouterLink to="/covid-condition">
-            <img src="../assets/Vector 9.svg" />
+            <img src="../assets/back-arrow.svg" />
           </RouterLink>
           <submit-button :isValid="meta.valid" destination="/tips" @click="handleSubmit" />
         </div>

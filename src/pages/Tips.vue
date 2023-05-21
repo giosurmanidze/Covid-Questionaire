@@ -121,7 +121,7 @@
             </div>
           </div>
           <div class="w-[50%] pt-20">
-            <img src="../assets/bike2 1.svg" />
+            <img src="../assets/bike.svg" />
             <div class="absolute w-[62rem] h-[7.5rem] top-[26%] left-[58%] rectangle"></div>
           </div>
         </div>
@@ -136,7 +136,7 @@
       </Form>
       <div class="flex justify-center pt-5">
         <RouterLink to="vaccination">
-          <img src="../assets/Vector 9.svg" />
+          <img src="../assets/back-arrow.svg" />
         </RouterLink>
       </div>
     </div>

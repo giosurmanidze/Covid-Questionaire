@@ -104,7 +104,7 @@
         </div>
         <div class="flex justify-center gap-16">
           <RouterLink to="private-info">
-            <img src="../assets/Vector 9.svg" />
+            <img src="../assets/back-arrow.svg" />
           </RouterLink>
           <submit-button :isValid="meta.valid" destination="/vaccination" @click="handleSubmit" />
         </div>

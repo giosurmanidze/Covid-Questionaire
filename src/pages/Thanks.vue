@@ -1,9 +1,9 @@
 <template>
   <div class="w-full h-screen bg-[#232323] flex justify-center items-center">
     <div class="relative">
-      <img src="../assets/Frame1.svg" class="w-16 big-star" />
+      <img src="../assets/star.svg" class="w-16 big-star" />
       <h1 class="text-[64px] text-[#FFFFFF]">მადლობა</h1>
-      <img src="../assets/Frame1.svg" class="absolute small-star right-0 w-10" />
+      <img src="../assets/star.svg" class="absolute small-star right-0 w-10" />
     </div>
   </div>
 </template>
