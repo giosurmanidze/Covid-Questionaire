@@ -2,7 +2,7 @@
   <div class="w-full flex justify-center h-screen bg-[#EAEAEA]">
     <div class="w-[80%] pt-14">
       <Header :currentPage="2" />
-      <Form @submit="onSubmit" v-slot="{ meta, values, handleSubmit }">
+      <Form  v-slot="{ meta, values, handleSubmit }">
         <div class="flex justify-between">
           <div class="pt-16 flex flex-col gap-16 w-[40%]">
             <div class="flex flex-col items-start gap-5">
@@ -149,9 +149,6 @@ const clearCovidTestAnswerYes = () => {
   localStorage.removeItem('number_of_anti')
 }
 
-function onSubmit(values) {
-  console.log(values)
-}
 </script>
 
 <style scoped>
