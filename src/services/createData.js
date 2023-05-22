@@ -1,4 +1,4 @@
-import axiosInstance from '../config/axiosInstance'
+import axiosInstance from '../config/index'
 
 export const createData = async (data) => {
   try {

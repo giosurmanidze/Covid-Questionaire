@@ -2,7 +2,7 @@
   <div class="w-full flex justify-center h-screen bg-[#EAEAEA]">
     <div class="w-[80%] pt-14">
       <Header :currentPage="2" />
-      <Form @submit="onSubmit" v-slot="{ meta, values, handleSubmit }">
+      <Form v-slot="{ meta, values, handleSubmit }">
         <div class="flex justify-between">
           <div class="pt-16 flex flex-col gap-16 w-[40%]">
             <div class="flex flex-col items-start gap-5">
@@ -59,7 +59,7 @@
                 />
                 <div
                   v-if="values.had_covid === 'yes' && values.had_antibody_test === 'true'"
-                  class="flex flex-col gap-3 w-[100%] pt-4"
+                  class="flex flex-col gap-5 w-[100%] pt-4"
                 >
                   <strong class="text-[22px]"
                     >თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების
@@ -67,9 +67,10 @@
                   >
                   <text-field
                     type="text"
-                    :value="store.state.number_date"
+                    rules="regex_date"
                     name="number_date"
-                    placeholder="რიცხვი"
+                    :value="store.state.number_date"
+                    placeholder="რიცხვი (დდ/მმ/წწ)"
                     :updateInput="updateInput"
                   />
                   <text-field
@@ -149,9 +150,10 @@ const clearCovidTestAnswerYes = () => {
   localStorage.removeItem('number_of_anti')
 }
 
-function onSubmit(values) {
-  console.log(values)
+const validateNumberDate = () => {
+  !/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/.test(value)
 }
+
 </script>
 
 <style scoped>
