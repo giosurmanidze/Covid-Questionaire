@@ -2,9 +2,9 @@
   <div class="w-full flex justify-center h-screen bg-[#EAEAEA]">
     <div class="w-[80%] pt-14">
       <Header :currentPage="3" />
-      <Form @submit="onSubmit" v-slot="{ meta, values, handleSubmit }">
+      <Form v-slot="{ meta, values, handleSubmit }">
         <div class="flex justify-between">
-          <div class="pt-16 flex flex-col gap-16 w-[40%]">
+          <div class="pt-16 flex flex-col gap-16 w-[50%]">
             <div class="flex flex-col items-start gap-5">
               <strong class="text-[22px]">უკვე აცრილი ხარ?*</strong>
               <radio-input
@@ -32,48 +32,47 @@
                 class="flex flex-col items-start gap-5 pt-4"
               >
                 <strong class="text-[22px]">აირჩიე რა ეტაპზე ხარ*</strong>
-                <radio-input
-                  type="radio"
-                  name="vaccination_stage"
-                  class="w-6 h-6"
-                  value="first_dosage_and_registered_on_the_second"
-                  :modelValue="store.state.vaccination_stage"
-                  rules="required"
-                  label="პირველი დოზა და დარეგისტრირებული ვარ მეორეზე"
-                />
-                <radio-input
-                  type="radio"
-                  name="vaccination_stage"
-                  class="w-6 h-6"
-                  value="fully_vaccinated"
-                  :modelValue="store.state.vaccination_stage"
-                  rules="required"
-                  label="სრულად აცრილი ვარ"
-                />
-                <radio-input
-                  type="radio"
-                  name="vaccination_stage"
-                  class="w-6 h-6"
-                  value="first_dosage_and_not_registered_yet"
-                  :modelValue="store.state.vaccination_stage"
-                  rules="required"
-                  label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
-                />
+                <div class="flex flex-col gap-5 w-full">
+                  <radio-input
+                    type="radio"
+                    name="vaccination_stage"
+                    class="w-6 h-6"
+                    value="first_dosage_and_registered_on_the_second"
+                    :modelValue="store.state.vaccination_stage"
+                    rules="required"
+                    label="პირველი დოზა და დარეგისტრირებული ვარ მეორეზე"
+                  />
+                  <radio-input
+                    type="radio"
+                    name="vaccination_stage"
+                    class="w-6 h-6"
+                    value="fully_vaccinated"
+                    :modelValue="store.state.vaccination_stage"
+                    rules="required"
+                    label="სრულად აცრილი ვარ"
+                  />
+                  <radio-input
+                    type="radio"
+                    name="vaccination_stage"
+                    class="w-6 h-6"
+                    value="first_dosage_and_not_registered_yet"
+                    :modelValue="store.state.vaccination_stage"
+                    rules="required"
+                    label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
+                  />
 
-                <div
-                  class="text-[20px] pl-10"
-                  v-if="
-                    values.vaccination_stage === 'first_dosage_and_not_registered_on_the_second'
-                  "
-                >
-                  <p>რომ არ გადადო,</p>
-                  <p>ბარემ ახლავე დარეგისტრირდი</p>
-                  <a class="text-[#1289AE]" href="https://booking.moh.gov.ge/"
-                    >https://booking.moh.gov.ge/</a
+                  <div
+                    class="text-[20px] pl-10 mt-3"
+                    v-if="values.vaccination_stage === 'first_dosage_and_not_registered_yet'"
                   >
+                    <p>რომ არ გადადო,</p>
+                    <p>ბარემ ახლავე დარეგისტრირდი</p>
+                    <a class="text-[#1289AE]" href="https://booking.moh.gov.ge/"
+                      >https://booking.moh.gov.ge/</a
+                    >
+                  </div>
                 </div>
               </div>
-
               <div
                 v-if="values.had_vaccine === 'false'"
                 class="flex flex-col items-start gap-5 pt-4"
@@ -101,15 +100,15 @@
                   type="radio"
                   name="waiting_for"
                   class="w-6 h-6"
-                  value="had_covid_and_planning_to_be_vaccinated "
+                  value="had_covid_and_planning_to_be_vaccinated"
                   :modelValue="store.state.waiting_for"
                   rules="required"
                   label="გადატანილი მაქვს და ვგეგმავ აცრას"
                 />
               </div>
               <div
-                class="text-[20px] pl-10 flex flex-col gap-3"
-                v-if="values.waiting_for === 'transferred_and_plan_to_get_vaccinated'"
+                class="text-[20px] pl-10 mt-3 flex flex-col gap-3"
+                v-if="values.waiting_for === 'had_covid_and_planning_to_be_vaccinated'"
               >
                 <div>
                   <p>ახალი პროტოკოლით კოვიდის გადატანიდან 1</p>
@@ -124,7 +123,6 @@
               </div>
             </div>
           </div>
-
           <div class="w-[50%] pt-16">
             <img src="../assets/main_logo_3.svg" class="rectangle absolute" />
             <img src="../assets/doctor.svg" class="relative" />
@@ -158,10 +156,6 @@ const clearFirstInput = () => {
 const clearSecondInput = () => {
   store.state.waiting_for = ''
   localStorage.removeItem('waiting_for')
-}
-
-function onSubmit(values) {
-  console.log(values)
 }
 </script>
 
