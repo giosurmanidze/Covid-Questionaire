@@ -2,7 +2,7 @@
   <div class="w-full flex justify-center h-screen bg-[#EAEAEA]">
     <div class="w-[80%] pt-14">
       <Header :currentPage="3" />
-      <Form @submit="onSubmit" v-slot="{ meta, values, handleSubmit }">
+      <Form v-slot="{ meta, values, handleSubmit }">
         <div class="flex justify-between">
           <div class="pt-16 flex flex-col gap-16 w-[40%]">
             <div class="flex flex-col items-start gap-5">
@@ -158,10 +158,6 @@ const clearFirstInput = () => {
 const clearSecondInput = () => {
   store.state.waiting_for = ''
   localStorage.removeItem('waiting_for')
-}
-
-function onSubmit(values) {
-  console.log(values)
 }
 </script>
 
