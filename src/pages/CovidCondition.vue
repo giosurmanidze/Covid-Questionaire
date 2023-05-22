@@ -59,7 +59,7 @@
                 />
                 <div
                   v-if="values.had_covid === 'yes' && values.had_antibody_test === 'true'"
-                  class="flex flex-col gap-3 w-[100%] pt-4"
+                  class="flex flex-col gap-5 w-[100%] pt-4"
                 >
                   <strong class="text-[22px]"
                     >თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების
@@ -149,6 +149,11 @@ const clearCovidTestAnswerYes = () => {
   store.state.number_of_anti = ''
   localStorage.removeItem('number_of_anti')
 }
+
+const validateNumberDate = () => {
+  !/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/.test(value)
+}
+
 </script>
 
 <style scoped>
