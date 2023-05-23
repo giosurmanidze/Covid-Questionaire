@@ -22,3 +22,11 @@ defineRule('regex_date', (value) => {
   }
   return true
 })
+
+defineRule('number', (value) => {
+  if (isNaN(Number(value))) {
+    return 'შეიყვანეთ რიცხვი სწორი ფორმატით.';
+  }
+  return true;
+});
+
