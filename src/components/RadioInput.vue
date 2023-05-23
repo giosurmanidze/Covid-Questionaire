@@ -6,13 +6,13 @@
         :name="name"
         :value="value"
         :rules="rules"
-        class="appearance-none w-5 h-5 flex items-center rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-2 checked:bg-neutral-900"
+        class="appearance-none w-5 h-5 flex items-center rounded-full bg-inherit shadow-custom border-2 border-[#B5C0C7] p-2 checked:bg-neutral-900"
         v-model="modelValue"
         @input="updateRadioValue(value)"
         @click="clearInput"
       />
-      {{ label }}</label
-    >
+      {{ label }}
+    </label>
   </div>
 </template>
 
@@ -67,3 +67,8 @@ watch(
   }
 )
 </script>
+<style scoped>
+.shadow-custom {
+  box-shadow: 0 0 0 1px rgb(0, 0, 0);
+}
+</style>
