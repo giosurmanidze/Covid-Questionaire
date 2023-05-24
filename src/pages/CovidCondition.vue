@@ -76,6 +76,7 @@
                   <text-field
                     type="text"
                     :value="store.state.number_of_anti"
+                    rules="number"
                     name="number_of_anti"
                     placeholder="ანტისხეულების რაოდენობა"
                     :updateInput="updateInput"
@@ -153,7 +154,6 @@ const clearCovidTestAnswerYes = () => {
 const validateNumberDate = () => {
   !/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/.test(value)
 }
-
 </script>
 
 <style scoped>
